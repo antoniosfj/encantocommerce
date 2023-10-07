@@ -48,9 +48,7 @@ function searchProduct() {
             placeholder='Buscar produtos'
             autocomplete='off'
             aria-label='Buscar produtos'
-            class='focus:outline-none w-full pr-3 pl-10 py-2 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm rounded-2xl
-              focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-              dark:placeholder-gray-400 dark:text-gray-400 dark:focus:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+            class='input-default'>
         </div>
       </form>
       <nav class='text-slate-700 dark:text-slate-200'>
