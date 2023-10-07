@@ -57,6 +57,10 @@ module.exports = {
         'singleline': 'never',
         'multiline': 'never'
       }
+    ],
+    'vue/html-quotes': [
+      'error',
+      'single'
     ]
   }
 }
