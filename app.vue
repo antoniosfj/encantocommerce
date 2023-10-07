@@ -1,8 +1,15 @@
+<script setup>
+useHead({
+  bodyAttrs: {
+    class: 'bg-slate-900 text-slate-500'
+  }
+})
+</script>
+
 <template>
   <div>
-    <NuxtWelcome />
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <AppHeader />
+    <NuxtPage class='max-w-7xl mx-auto' />
+    <AppFooter />
   </div>
 </template>
