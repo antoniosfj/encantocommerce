@@ -6,6 +6,7 @@ module.exports = {
   },
   'extends': [
     'eslint:recommended',
+    '@nuxt/eslint-config',
     'plugin:vue/vue3-strongly-recommended'
   ],
   'overrides': [
