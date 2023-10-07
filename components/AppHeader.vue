@@ -1,8 +1,6 @@
 <script setup>
 function toggleColorMode() {
-  console.log('bla')
   const currentTheme = localStorage.theme
-  console.log({ currentTheme })
   if (!localStorage.theme || currentTheme === 'light') {
     localStorage.theme = 'dark'
     document.documentElement.classList.add('dark')
@@ -10,7 +8,6 @@ function toggleColorMode() {
     localStorage.theme = 'light'
     document.documentElement.classList.remove('dark')
   }
-  console.log({ currentTheme: localStorage.theme })
 }
 
 </script>
@@ -21,13 +18,13 @@ function toggleColorMode() {
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
-        class='text-slate-200 hover:text-sky-400 font-semibold leading-6'>
+        class='text-slate-700 dark:text-slate-200 hover:text-sky-400 font-semibold leading-6'>
         Encanto
       </a>
       <form
         action=''
         class='max-w-md w-full mx-auto'>
-        <div class='relative flex items-center dark:text-gray-400 focus-within:text-white duration-200 mx-3'>
+        <div class='relative flex items-center text-gray-300 focus-within:text-gray-400 dark:text-gray-400 dark:focus-within:text-white duration-200 mx-3'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -46,34 +43,28 @@ function toggleColorMode() {
             placeholder='Procure um produto'
             autocomplete='off'
             aria-label='Procure um produto'
-            class='focus:outline-none w-full pr-3 pl-10 py-2 bg-gray-50 border border-gray-300 text-gray-800 focus:text-gray-900 text-sm rounded-2xl
+            class='focus:outline-none w-full pr-3 pl-10 py-2 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm rounded-2xl
               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
               dark:placeholder-gray-400 dark:text-gray-400 dark:focus:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
         </div>
       </form>
-      <ul class='flex space-x-8'>
-        <li>
-          <a
-            href='/'
-            class='text-slate-200 hover:text-sky-400 font-semibold leading-6'>
-            Conheca
-          </a>
-        </li>
-        <li>
-          <a
-            href='/'
-            class='text-slate-200 hover:text-sky-400 font-semibold leading-6'>
-            Carrinho
-          </a>
-        </li>
-        <li>
-          <a
-            href='/'
-            class='text-slate-200 hover:text-sky-400 font-semibold leading-6'>
-            Algo
-          </a>
-        </li>
-      </ul>
+      <nav class='text-slate-700 dark:text-slate-200'>
+        <ul class='flex space-x-8'>
+          <li
+            v-for="[name, url] in [
+              ['Conheca', '/'],
+              ['Carrinho', '/'],
+              ['Algo', '/'],
+            ]"
+            :key='name'>
+            <a
+              :href='url'
+              class='hover:text-sky-400 font-semibold leading-6'>
+              {{ name }}
+            </a>
+          </li>
+        </ul>
+      </nav>
       <div
         class='ml-6 pl-6 border-slate-500 border-l cursor-pointer'
         @click='toggleColorMode'>

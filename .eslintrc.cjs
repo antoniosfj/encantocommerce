@@ -61,7 +61,8 @@ module.exports = {
     ],
     'vue/html-quotes': [
       'error',
-      'single'
+      'single',
+      { 'avoidEscape': true },
     ]
   }
 }
