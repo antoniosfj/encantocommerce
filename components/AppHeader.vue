@@ -1,7 +1,17 @@
 <script setup>
 import { useThemeStore } from '@/store/theme'
+import { storeToRefs } from 'pinia'
 const themeStore = useThemeStore()
+const { theme } = storeToRefs(themeStore)
 const { toggleTheme } = themeStore
+
+const searchText = ref('')
+const searchInput = ref(null)
+
+function searchProduct() {
+  if (!searchText.value && searchInput) searchInput.value.focus()
+  searchText.value = ''
+}
 </script>
 
 <template>
@@ -23,18 +33,21 @@ const { toggleTheme } = themeStore
             viewBox='0 0 24 24'
             stroke-width='1.5'
             stroke='currentColor'
-            class='w-6 h-6 absolute ml-3 pointer-events-none'>
+            class='w-6 h-6 absolute ml-3 cursor-pointer'
+            @click='searchProduct'>
             <path
               stroke-linecap='round'
               stroke-linejoin='round'
               d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' />
           </svg>
           <input
+            ref='searchInput'
+            v-model='searchText'
             type='text'
             name='search'
-            placeholder='Procure um produto'
+            placeholder='Buscar produtos'
             autocomplete='off'
-            aria-label='Procure um produto'
+            aria-label='Buscar produtos'
             class='focus:outline-none w-full pr-3 pl-10 py-2 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm rounded-2xl
               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
               dark:placeholder-gray-400 dark:text-gray-400 dark:focus:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
@@ -44,8 +57,8 @@ const { toggleTheme } = themeStore
         <ul class='flex space-x-8'>
           <li
             v-for="[name, url] in [
-              ['Conheca', '/'],
-              ['Carrinho', '/'],
+              ['Crie a sua conta', '/'],
+              ['Entre', '/'],
               ['Algo', '/'],
             ]"
             :key='name'>
@@ -58,16 +71,16 @@ const { toggleTheme } = themeStore
         </ul>
       </nav>
       <div
-        class='ml-6 pl-6 text-slate-700 dark:text-slate-200 border-slate-500 border-l cursor-pointer'
-        @click='toggleTheme'>
+        class='ml-6 pl-6 text-slate-700 dark:text-slate-200 border-slate-500 border-l'>
         <svg
-          v-if="currentTheme =='dark'"
+          v-if="theme =='dark'"
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
           viewBox='0 0 24 24'
           stroke-width='1.5'
           stroke='currentColor'
-          class='w-5 h-5 hover:text-sky-400 font-semibold'>
+          class='w-5 h-5 hover:text-sky-400 font-semibold cursor-pointer'
+          @click='toggleTheme'>
           <path
             stroke-linecap='round'
             stroke-linejoin='round'
@@ -80,7 +93,8 @@ const { toggleTheme } = themeStore
           viewBox='0 0 24 24'
           stroke-width='1.5'
           stroke='currentColor'
-          class='w-5 h-5 hover:text-sky-400 font-semibold'>
+          class='w-5 h-5 hover:text-sky-400 font-semibold cursor-pointer'
+          @click='toggleTheme'>
           <path
             stroke-linecap='round'
             stroke-linejoin='round'
