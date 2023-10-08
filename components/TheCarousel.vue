@@ -25,6 +25,15 @@ const nextSlide = () => {
   const newIndex = isLastSlide ? 0 : currentIndex.value + 1
   currentIndex.value = newIndex
 }
+
+let carouselIntervalId: NodeJS.Timeout
+onMounted(() => {
+  carouselIntervalId = setInterval(() => {
+    nextSlide()
+  }, 4000)
+})
+
+onUnmounted(() => clearInterval(carouselIntervalId))
 </script>
 
 <template>
@@ -32,27 +41,27 @@ const nextSlide = () => {
     <div
       :style='{ backgroundImage: `url(${props.slides[currentIndex].url})` }'
       class='h-full w-full rounded-2xl bg-center bg-cover duration-500' />
-    <div class='backdrop-blur hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 dark:bg-black/20 dark:text-white bg-white/20 text-black cursor-pointer'>
+    <div class='backdrop-blur-sm hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 dark:bg-gray-800/20 dark:text-gray-800 bg-white/20 text-white cursor-pointer'>
       <Icon
         name='mdi:chevron-left'
         size='30'
         @click='prevSlide' />
     </div>
-    <div class='backdrop-blur hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 rounded-full p-2 dark:bg-black/20 dark:text-white bg-white/20 text-black cursor-pointer'>
+    <div class='backdrop-blur hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 rounded-full p-2 dark:bg-gray-800/20 dark:text-gray-800 bg-white/20 text-white cursor-pointer'>
       <Icon
         name='mdi:chevron-right'
         size='30'
         @click='nextSlide' />
     </div>
-    <div class='flex gap-4 top-4 justify-center py-2 dark:bg-black/20 dark:text-white bg-white/20 text-black'>
+    <div class='relative flex space-x-3 bottom-8 justify-center'>
       <div
         v-for='(slide, index) in props.slides'
-        :key='index'
-        class='text-xl'>
+        :key='index'>
         <Icon
           name='mdi:circle'
-          class='cursor-pointer'
-          size='10'
+          class='cursor-pointer dark:hover:text-gray-800 text-white'
+          size='15'
+          :class="[index === currentIndex ? 'dark:text-gray-800 text-white' : 'dark:text-gray-800/50 text-white/50']"
           @click='currentIndex = index' />
       </div>
     </div>
