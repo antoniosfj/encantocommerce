@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang='ts'>
 import { useThemeStore } from '@/store/theme'
 import { storeToRefs } from 'pinia'
 const themeStore = useThemeStore()
@@ -6,10 +6,10 @@ const { theme } = storeToRefs(themeStore)
 const { toggleTheme } = themeStore
 
 const searchText = ref('')
-const searchInput = ref(null)
+const searchInput = ref<HTMLInputElement  | null>(null)
 
 function searchProduct() {
-  if (!searchText.value && searchInput) searchInput.value.focus()
+  if (!searchText.value && searchInput) searchInput.value?.focus()
   searchText.value = ''
 }
 </script>

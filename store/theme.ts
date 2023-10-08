@@ -1,8 +1,10 @@
 import { defineStore, skipHydrate } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
 
+type ColorTheme = 'dark' | 'light'
+
 export const useThemeStore = defineStore('theme', () => {
-  const theme = ref(useLocalStorage('theme', 'dark'))
+  const theme: Ref<ColorTheme> = ref(useLocalStorage<ColorTheme>('theme', 'dark'))
 
   function toggleTheme() {
     if (!theme.value || theme.value === 'light') {
