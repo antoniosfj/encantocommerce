@@ -16,7 +16,12 @@ const slides = [
 </script>
 
 <template>
-  <the-carousel
-    class='mt-5'
-    :slides='slides' />
+  <div class='mt-20'>
+    <the-carousel
+      class='mt-5'
+      :slides='slides' />
+    <the-carousel
+      class='mt-5'
+      :slides='slides' />
+  </div>
 </template>

@@ -16,7 +16,7 @@ function searchProduct() {
 
 <template>
   <div
-    class='py-4 px-4 lg:px-8 w-full z-40 flex-none bg-transparent backdrop-blur border-slate-500 border-b'>
+    class='fixed top-0 py-4 px-4 lg:px-8 w-full z-40 flex-none backdrop-blur border-slate-500 border-b dark:bg-slate-900/60 bg-slate-100/60'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
