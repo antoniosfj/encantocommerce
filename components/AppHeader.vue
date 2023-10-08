@@ -48,7 +48,7 @@ function searchProduct() {
             placeholder='Buscar produtos'
             autocomplete='off'
             aria-label='Buscar produtos'
-            class='input-default'>
+            class='input-default rounded-2xl'>
         </div>
       </form>
       <nav class='text-slate-700 dark:text-slate-200'>
@@ -57,7 +57,7 @@ function searchProduct() {
             v-for="[name, url] in [
               ['Crie a sua conta', '/'],
               ['Entre', '/'],
-              ['Algo', '/'],
+              ['Carrinho', '/'],
             ]"
             :key='name'>
             <a

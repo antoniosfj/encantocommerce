@@ -21,8 +21,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     
-    // Simple usage
     '@nuxtjs/eslint-module',
-    ['@nuxtjs/eslint-module', { /* module options */ }]
+    ['@nuxtjs/eslint-module', { }]
   ],
 })
