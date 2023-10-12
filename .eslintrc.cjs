@@ -50,7 +50,19 @@ module.exports = {
     ],
     'semi': [
       'error',
-      'never'
+      'always'
+    ],
+    'nonblock-statement-body-position': [
+      'error',
+      'below',
+    ],
+    'curly': [
+      'error',
+      'all',
+    ],
+    'brace-style': [
+      'error',
+      '1tbs'
     ],
     'vue/html-closing-bracket-newline': [
       'error',
@@ -65,4 +77,4 @@ module.exports = {
       { 'avoidEscape': true },
     ]
   }
-}
+};

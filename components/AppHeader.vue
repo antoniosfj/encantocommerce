@@ -1,22 +1,25 @@
 <script setup lang='ts'>
-import { useThemeStore } from '@/store/theme'
-import { storeToRefs } from 'pinia'
-const themeStore = useThemeStore()
-const { theme } = storeToRefs(themeStore)
-const { toggleTheme } = themeStore
+import { useThemeStore } from '@/store/theme';
+import { storeToRefs } from 'pinia';
+const themeStore = useThemeStore();
+const { theme } = storeToRefs(themeStore);
+const { toggleTheme } = themeStore;
 
-const searchText = ref('')
-const searchInput = ref<HTMLInputElement  | null>(null)
+const searchText = ref('');
+const searchInput = ref<HTMLInputElement  | null>(null);
 
 function searchProduct() {
-  if (!searchText.value && searchInput) searchInput.value?.focus()
-  searchText.value = ''
+  if (!searchText.value && searchInput) {
+    searchInput.value?.focus();
+  }
+  
+  searchText.value = '';
 }
 </script>
 
 <template>
   <div
-    class='fixed top-0 py-4 px-4 lg:px-8 w-full z-40 flex-none backdrop-blur border-slate-500 border-b dark:bg-slate-900/60 bg-slate-100/60'>
+    class='sticky top-0 py-4 px-4 lg:px-8 w-full z-40 flex-none backdrop-blur border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'

@@ -37,10 +37,10 @@ onUnmounted(() => clearInterval(carouselIntervalId))
 </script>
 
 <template>
-  <div class='w-full max-w-[1400px] h-[780px] max-h-[780px] m-auto px-4 relative group'>
+  <div class='w-full max-w-[1400px] h-[780px] max-h-[780px] m-auto relative group'>
     <div
       :style='{ backgroundImage: `url(${props.slides[currentIndex].url})` }'
-      class='h-full w-full rounded-2xl bg-center bg-cover duration-500' />
+      class='h-full w-full rounded-md bg-center bg-cover duration-500' />
     <div class='backdrop-blur-sm hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 dark:bg-gray-800/20 dark:text-gray-800 bg-white/20 text-white cursor-pointer'>
       <Icon
         name='mdi:chevron-left'
