@@ -5,6 +5,9 @@ const themeStore = useThemeStore();
 const { theme } = storeToRefs(themeStore);
 const { toggleTheme } = themeStore;
 
+const showCartModal = ref(false);
+
+
 const searchText = ref('');
 const searchInput = ref<HTMLInputElement  | null>(null);
 
@@ -15,6 +18,8 @@ function searchProduct() {
   
   searchText.value = '';
 }
+
+
 </script>
 
 <template>
@@ -23,7 +28,7 @@ function searchProduct() {
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
-        class='text-slate-700 dark:text-slate-200 hover:text-sky-400 font-semibold leading-6'>
+        class='text-default-color hover:text-sky-400 font-semibold leading-6'>
         Encanto
       </a>
       <form
@@ -45,25 +50,18 @@ function searchProduct() {
             class='input-default rounded-2xl'>
         </div>
       </form>
-      <nav class='text-slate-700 dark:text-slate-200'>
-        <ul class='flex space-x-8'>
-          <li
-            v-for="[name, url] in [
-              ['Crie a sua conta', '/'],
-              ['Entre', '/'],
-              ['Carrinho', '/'],
-            ]"
-            :key='name'>
-            <a
-              :href='url'
-              class='hover:text-sky-400 font-semibold leading-6'>
-              {{ name }}
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <div class='flex space-x-8 text-default-color hover:text-sky-400 font-semibold leading-6 cursor-pointer'>
+        Ola, crie sua conta ou logue
+        <Icon
+          name='mdi:chevron-down'
+          class='w-6 h-6 rotate-180' />
+      </div>
+      <Icon
+        name='mdi:cart-outline'
+        class='w-6 h-6 cursor-pointer text-blue-500 dark:text-green-500 ml-6'
+        @click='showCartModal = true' />
       <div
-        class='ml-6 pl-6 text-slate-700 dark:text-slate-200 border-slate-500 border-l'>
+        class='ml-6 pl-6 text-default-color border-slate-500 border-l'>
         <Icon
           v-if="theme =='dark'"
           name='tabler:sun-high'
@@ -76,5 +74,6 @@ function searchProduct() {
           @click='toggleTheme' />
       </div>
     </div>
+    <the-modal v-model='showCartModal' />
   </div>
 </template>

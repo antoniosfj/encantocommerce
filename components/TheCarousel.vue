@@ -10,34 +10,34 @@ const props = defineProps({
     required: true,
     default: () => [],
   }
-})
+});
 
-const currentIndex = ref(0)
+const currentIndex = ref(0);
 
 const prevSlide = () => {
-  const isFirstSlide = currentIndex.value === 0
-  const newIndex = isFirstSlide ? props.slides.length - 1 : currentIndex.value - 1
-  currentIndex.value = newIndex
-}
+  const isFirstSlide = currentIndex.value === 0;
+  const newIndex = isFirstSlide ? props.slides.length - 1 : currentIndex.value - 1;
+  currentIndex.value = newIndex;
+};
 
 const nextSlide = () => {
-  const isLastSlide = currentIndex.value === props.slides.length - 1
-  const newIndex = isLastSlide ? 0 : currentIndex.value + 1
-  currentIndex.value = newIndex
-}
+  const isLastSlide = currentIndex.value === props.slides.length - 1;
+  const newIndex = isLastSlide ? 0 : currentIndex.value + 1;
+  currentIndex.value = newIndex;
+};
 
-let carouselIntervalId: NodeJS.Timeout
+let carouselIntervalId: NodeJS.Timeout;
 onMounted(() => {
   carouselIntervalId = setInterval(() => {
-    nextSlide()
-  }, 4000)
-})
+    nextSlide();
+  }, 4000);
+});
 
-onUnmounted(() => clearInterval(carouselIntervalId))
+onUnmounted(() => clearInterval(carouselIntervalId));
 </script>
 
 <template>
-  <div class='w-full max-w-[1400px] h-[780px] max-h-[780px] m-auto relative group'>
+  <div class='w-full h-[780px] max-h-[780px] m-auto relative group'>
     <div
       :style='{ backgroundImage: `url(${props.slides[currentIndex].url})` }'
       class='h-full w-full rounded-md bg-center bg-cover duration-500' />

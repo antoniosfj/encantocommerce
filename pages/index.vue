@@ -15,7 +15,7 @@ const slides = [
   {
     url: '/img/bbs.jpg'
   },
-]
+];
 </script>
 
 <template>

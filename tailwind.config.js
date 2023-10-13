@@ -9,8 +9,11 @@ export default {
     './app.vue',
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {},
   },
   plugins: [],
-}
+};
 
