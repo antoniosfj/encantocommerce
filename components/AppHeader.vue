@@ -5,7 +5,7 @@ const themeStore = useThemeStore();
 const { theme } = storeToRefs(themeStore);
 const { toggleTheme } = themeStore;
 
-const showCartModal = ref(false);
+const showCartModal = ref(true);
 
 
 const searchText = ref('');
@@ -78,24 +78,36 @@ function searchProduct() {
       v-model='showCartModal'
       backdrop-class='justify-end items-start p-0'
       modal-class='w-80 h-full'>
-      <div
-        class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
-        <div class='flex items-center justify-between'>
-          <div>
-            <Icon
-              name='mdi:cart-outline'
-              class='w-6 h-6 text-blue-500 dark:text-green-500' />
-            <span class='default-text-color ml-3'>Carrinho</span>
-          </div>
-          <div
-            class='py-4 px-4 border-l border-gray-300 dark:border-gray-700 cursor-pointer'
-            @click='showCartModal = false'>
-            <Icon
-              name='mdi:close'
-              class='min-h-[38px] w-6 h-6 default-text-color' />
+      <template #default='{ closeModal }'>
+        <div
+          class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
+          <div class='flex items-center justify-between'>
+            <div>
+              <Icon
+                name='mdi:cart-outline'
+                class='w-6 h-6 text-blue-500 dark:text-green-500' />
+              <span class='default-text-color ml-3'>Carrinho</span>
+            </div>
+            <div
+              class='py-4 px-4 border-l border-gray-300 dark:border-gray-700 cursor-pointer'
+              @click='closeModal()'>
+              <Icon
+                name='mdi:close'
+                class='min-h-[34px] w-6 h-6 default-text-color' />
+            </div>
           </div>
         </div>
-      </div>
+        <div class='p-5'>
+          <button
+            class='btn-success block w-full rounded-3xl uppercase font-semibold'>
+            Checkout
+          </button>
+          <button
+            class='mt-2 mb-3 btn-secondary'>
+            Editar
+          </button>
+        </div>
+      </template>
     </the-modal>
   </div>
 </template>

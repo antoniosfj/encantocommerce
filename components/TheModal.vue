@@ -19,26 +19,75 @@ const props = defineProps({
   },
 });
 
+const showContent = ref(false);
+
 function closeModal() {
-  console.log('closed by event');
-  emit('update:modelValue', false);
+  showContent.value = false;
 }
+
+watch(() => props.modelValue, (val) => {
+  if (val) {
+    showContent.value = true;
+  }
+}, {immediate: true});
+
 </script>
 
 <template>
   <teleport
     to='body'>
-    <div
-      v-if='props.modelValue'
-      class='max-h-full inset-0 dark:bg-gray-400 bg-gray-900 bg-opacity-50 dark:bg-opacity-50 fixed z-50 flex'
-      :class='backdropClass'
-      @click='closeModal'>
+    <Transition @after-enter='showContent = true'>
       <div
-        :class='modalClass'
-        class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black relative'
-        @click.stop=''>
-        <slot />
+        v-show='props.modelValue'
+        class='max-h-full inset-0 dark:bg-gray-400 bg-gray-900 bg-opacity-50 dark:bg-opacity-50 fixed z-50 flex'
+        :class='backdropClass'
+        @click='closeModal'>
+        <Transition
+          name='slide'
+          @after-leave="emit('update:modelValue', false)">
+          <div
+            v-if='showContent'
+            :class='modalClass'
+            class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black relative'
+            @click.stop=''>
+            <!-- Default slot -->
+        
+            <slot
+              name='default'
+              :close-modal='closeModal' />
+          </div>
+        </Transition>
       </div>
-    </div>
+    </Transition>
   </teleport>
 </template>
+
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: all .3s ease;
+} 
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(500px);
+}
+
+/* .slide-enter-to, .slide-leave-from {
+  transform: translateX(0px);
+} */
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.v-enter-to, .v-leave-from {
+  opacity: 1;
+}
+</style>
