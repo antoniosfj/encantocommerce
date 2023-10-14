@@ -39,12 +39,12 @@ watch(() => props.modelValue, (val) => {
     <Transition @after-enter='showContent = true'>
       <div
         v-show='props.modelValue'
-        class='max-h-full inset-0 dark:bg-gray-400 bg-gray-900 bg-opacity-50 dark:bg-opacity-50 fixed z-50 flex'
+        class='max-h-full inset-0 dark:bg-gray-500 bg-gray-900 bg-opacity-50 dark:bg-opacity-50 fixed z-50 flex'
         :class='backdropClass'
         @click='closeModal'>
         <Transition
           name='slide'
-          @after-leave="emit('update:modelValue', false)">
+          @leave="emit('update:modelValue', false)">
           <div
             v-if='showContent'
             :class='modalClass'
@@ -79,7 +79,7 @@ watch(() => props.modelValue, (val) => {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0s ease;
+  transition: opacity .3s ease;
 }
 
 .v-enter-from,

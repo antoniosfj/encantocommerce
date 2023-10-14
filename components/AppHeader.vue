@@ -5,8 +5,7 @@ const themeStore = useThemeStore();
 const { theme } = storeToRefs(themeStore);
 const { toggleTheme } = themeStore;
 
-const showCartModal = ref(true);
-
+const showCartModal = ref(false);
 
 const searchText = ref('');
 const searchInput = ref<HTMLInputElement  | null>(null);
@@ -24,7 +23,7 @@ function searchProduct() {
 
 <template>
   <div
-    class='sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
+    class='sticky top-0 py-4 px-4 z-40 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
@@ -54,7 +53,7 @@ function searchProduct() {
         Ola, crie sua conta ou logue
         <Icon
           name='mdi:chevron-down'
-          class='w-6 h-6 rotate-180' />
+          class='w-6 h-6 active:rotate-180' />
       </div>
       <Icon
         name='mdi:cart-outline'
