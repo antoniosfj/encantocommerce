@@ -24,11 +24,11 @@ function searchProduct() {
 
 <template>
   <div
-    class='sticky top-0 py-4 px-4 lg:px-8 w-full z-40 flex-none backdrop-blur border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
+    class='sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
-        class='text-default-color hover:text-sky-400 font-semibold leading-6'>
+        class='default-text-color hover:text-sky-400 font-semibold leading-6'>
         Encanto
       </a>
       <form
@@ -50,7 +50,7 @@ function searchProduct() {
             class='input-default rounded-2xl'>
         </div>
       </form>
-      <div class='flex space-x-8 text-default-color hover:text-sky-400 font-semibold leading-6 cursor-pointer'>
+      <div class='flex space-x-8 default-text-color hover:text-sky-400 font-semibold leading-6 cursor-pointer'>
         Ola, crie sua conta ou logue
         <Icon
           name='mdi:chevron-down'
@@ -61,7 +61,7 @@ function searchProduct() {
         class='w-6 h-6 cursor-pointer text-blue-500 dark:text-green-500 ml-6'
         @click='showCartModal = true' />
       <div
-        class='ml-6 pl-6 text-default-color border-slate-500 border-l'>
+        class='ml-6 pl-6 default-text-color border-slate-500 border-l'>
         <Icon
           v-if="theme =='dark'"
           name='tabler:sun-high'
@@ -74,6 +74,28 @@ function searchProduct() {
           @click='toggleTheme' />
       </div>
     </div>
-    <the-modal v-model='showCartModal' />
+    <the-modal
+      v-model='showCartModal'
+      backdrop-class='justify-end items-start p-0'
+      modal-class='w-80 h-full'>
+      <div
+        class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
+        <div class='flex items-center justify-between'>
+          <div>
+            <Icon
+              name='mdi:cart-outline'
+              class='w-6 h-6 text-blue-500 dark:text-green-500' />
+            <span class='default-text-color ml-3'>Carrinho</span>
+          </div>
+          <div
+            class='py-4 px-4 border-l border-gray-300 dark:border-gray-700 cursor-pointer'
+            @click='showCartModal = false'>
+            <Icon
+              name='mdi:close'
+              class='min-h-[38px] w-6 h-6 default-text-color' />
+          </div>
+        </div>
+      </div>
+    </the-modal>
   </div>
 </template>
