@@ -18,13 +18,19 @@ function searchProduct() {
   searchText.value = '';
 }
 
+const searching = ref(false);
 
 </script>
 
 <template>
-  <the-backdrop :model-value='true' />
+  <Transition>
+    <div
+      v-show='searching'
+      class='max-h-full inset-0 bg-black bg-opacity-60 fixed z-20 flex' />
+  </Transition>
   <div
-    class='sticky top-0 py-4 px-4 z-40 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
+    :class="[searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95' : 'z-10 bg-opacity-70 dark:bg-opacity-70']"
+    class='sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900 bg-slate-100'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
@@ -47,7 +53,9 @@ function searchProduct() {
             placeholder='Buscar produtos'
             autocomplete='off'
             aria-label='Buscar produtos'
-            class='input-default rounded-2xl'>
+            class='input-default rounded-2xl'
+            @focus='searching = true'
+            @blur='searching = false'>
           <search-list-overlay />
         </div>
       </form>
@@ -78,7 +86,7 @@ function searchProduct() {
     <the-modal
       v-model='showCartModal'
       backdrop-class='justify-end items-start p-0'
-      modal-class='w-80 h-full'>
+      modal-class='w-80 h-full right-0 border-l border-gray-300 border-gray-300 dark:border-gray-700'>
       <template #default='{ closeModal }'>
         <div
           class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>

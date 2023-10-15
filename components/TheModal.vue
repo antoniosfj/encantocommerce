@@ -23,6 +23,7 @@ const showContent = ref(false);
 
 function closeModal() {
   showContent.value = false;
+  emit('update:modelValue', false);
 }
 
 watch(() => props.modelValue, (val) => {
@@ -34,19 +35,22 @@ watch(() => props.modelValue, (val) => {
 </script>
 
 <template>
-  <the-backdrop
-    :model-value='props.modelValue'
-    :backdrop-class='backdropClass'
-    @update:model-value="(val) => emit('update:modelValue', val)"
-    @backdrop-click='closeModal'
-    @after-enter='showContent = true'>
+  <teleport
+    to='body'>
+    <Transition>
+      <div
+        v-show='props.modelValue'
+        :class='backdropClass'
+        class='max-h-full inset-0 bg-black bg-opacity-60 fixed z-20 flex'
+        @click='closeModal' />
+    </Transition>
     <Transition
       name='slide'
       @leave="emit('update:modelValue', false)">
       <div
-        v-if='showContent'
+        v-show='props.modelValue'
         :class='modalClass'
-        class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black relative'
+        class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black fixed z-40'
         @click.stop=''>
         <!-- Default slot -->
     
@@ -55,7 +59,7 @@ watch(() => props.modelValue, (val) => {
           :close-modal='closeModal' />
       </div>
     </Transition>
-  </the-backdrop>
+  </teleport>
   <!-- <teleport
     to='body'>
     <Transition @after-enter='showContent = true'>
@@ -96,18 +100,4 @@ watch(() => props.modelValue, (val) => {
 /* .slide-enter-to, .slide-leave-from {
   transform: translateX(0px);
 } */
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity .3s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-
-.v-enter-to, .v-leave-from {
-  opacity: 1;
-}
 </style>
