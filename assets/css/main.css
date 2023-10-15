@@ -25,15 +25,17 @@
 
   .v-enter-active,
   .v-leave-active {
-    transition: opacity .5s ease;
+    transition: opacity 5s ease;
   }
 
   .v-enter-from,
   .v-leave-to {
     opacity: 0;
+    --tw-bg-opacity: 0;
   }
 
   .v-enter-to, .v-leave-from {
     opacity: 1;
+    --tw-bg-opacity: 0.6;
   }
 }

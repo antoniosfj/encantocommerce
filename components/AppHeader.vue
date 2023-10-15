@@ -26,11 +26,11 @@ const searching = ref(false);
   <Transition>
     <div
       v-show='searching'
-      class='max-h-full inset-0 bg-black bg-opacity-60 fixed z-20 flex' />
+      class='max-h-full inset-0 bg-black bg-opacity-60 fixed z-20' />
   </Transition>
   <div
     :class="[searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95' : 'z-10 bg-opacity-70 dark:bg-opacity-70']"
-    class='sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900 bg-slate-100'>
+    class='sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900 bg-slate-100 duration-100'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
@@ -120,3 +120,20 @@ const searching = ref(false);
     </the-modal>
   </div>
 </template>
+
+
+<style scoped>
+.v-enter-active,
+  .v-leave-active {
+    transition: opacity .3s ease;
+  }
+
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
+  }
+
+  .v-enter-to, .v-leave-from {
+    opacity: 1;
+  }
+  </style>
