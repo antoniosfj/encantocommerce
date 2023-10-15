@@ -34,12 +34,34 @@ watch(() => props.modelValue, (val) => {
 </script>
 
 <template>
-  <teleport
+  <the-backdrop
+    :model-value='props.modelValue'
+    :backdrop-class='backdropClass'
+    @update:model-value="(val) => emit('update:modelValue', val)"
+    @backdrop-click='closeModal'
+    @after-enter='showContent = true'>
+    <Transition
+      name='slide'
+      @leave="emit('update:modelValue', false)">
+      <div
+        v-if='showContent'
+        :class='modalClass'
+        class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black relative'
+        @click.stop=''>
+        <!-- Default slot -->
+    
+        <slot
+          name='default'
+          :close-modal='closeModal' />
+      </div>
+    </Transition>
+  </the-backdrop>
+  <!-- <teleport
     to='body'>
     <Transition @after-enter='showContent = true'>
       <div
         v-show='props.modelValue'
-        class='max-h-full inset-0 dark:bg-gray-500 bg-gray-900 bg-opacity-50 dark:bg-opacity-50 fixed z-50 flex'
+        class='max-h-full inset-0 dark:bg-gray-700 bg-gray-900 bg-opacity-50 dark:bg-opacity-50 fixed z-50 flex'
         :class='backdropClass'
         @click='closeModal'>
         <Transition
@@ -49,9 +71,7 @@ watch(() => props.modelValue, (val) => {
             v-if='showContent'
             :class='modalClass'
             class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black relative'
-            @click.stop=''>
-            <!-- Default slot -->
-        
+            @click.stop=''>        
             <slot
               name='default'
               :close-modal='closeModal' />
@@ -59,7 +79,7 @@ watch(() => props.modelValue, (val) => {
         </Transition>
       </div>
     </Transition>
-  </teleport>
+  </teleport> -->
 </template>
 
 <style scoped>

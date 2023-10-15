@@ -22,6 +22,7 @@ function searchProduct() {
 </script>
 
 <template>
+  <the-backdrop :model-value='true' />
   <div
     class='sticky top-0 py-4 px-4 z-40 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
     <div class='max-w-7xl mx-auto flex items-center'>
@@ -47,6 +48,7 @@ function searchProduct() {
             autocomplete='off'
             aria-label='Buscar produtos'
             class='input-default rounded-2xl'>
+          <search-list-overlay />
         </div>
       </form>
       <div class='flex space-x-8 default-text-color hover:text-sky-400 font-semibold leading-6 cursor-pointer'>

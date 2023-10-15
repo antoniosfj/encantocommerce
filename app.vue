@@ -9,6 +9,7 @@ useHead({
 <template>
   <div>
     <AppHeader />
+    <the-backdrop :model-value='true' />
     <NuxtPage class='max-w-7xl mx-auto px-4' />
     <AppFooter />
   </div>
