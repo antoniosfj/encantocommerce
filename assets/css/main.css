@@ -15,27 +15,11 @@
   .input-default {
     @apply focus:outline-none w-full pr-3 pl-10 py-1.5 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm
     rounded focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600
-    dark:placeholder-gray-400 dark:text-gray-400 dark:focus:text-white dark:focus:ring-blue-500
+    dark:placeholder-gray-300 dark:text-gray-300 dark:focus:text-white dark:focus:ring-blue-500
     dark:focus:border-blue-500 transition-colors duration-500;
   }
 
   .default-text-color {
     @apply text-slate-700 dark:text-slate-200
-  }
-
-  .v-enter-active,
-  .v-leave-active {
-    transition: opacity 5s ease;
-  }
-
-  .v-enter-from,
-  .v-leave-to {
-    opacity: 0;
-    --tw-bg-opacity: 0;
-  }
-
-  .v-enter-to, .v-leave-from {
-    opacity: 1;
-    --tw-bg-opacity: 0.6;
   }
 }

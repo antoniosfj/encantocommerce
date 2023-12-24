@@ -26,10 +26,10 @@ const searching = ref(false);
   <Transition>
     <div
       v-show='searching'
-      class='max-h-full inset-0 bg-black bg-opacity-60 fixed z-20' />
+      class='max-h-full inset-0 bg-black bg-opacity-70 fixed z-20' />
   </Transition>
   <div
-    :class="[searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95' : 'z-10 bg-opacity-70 dark:bg-opacity-70']"
+    :class="[searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95' : 'z-30 bg-opacity-70 dark:bg-opacity-70']"
     class='sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900 bg-slate-100 duration-100'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
@@ -37,8 +37,7 @@ const searching = ref(false);
         class='default-text-color hover:text-sky-400 font-semibold leading-6'>
         Encanto
       </a>
-      <form
-        action=''
+      <div
         class='max-w-md w-full mx-auto'>
         <div class='relative flex items-center text-gray-300 focus-within:text-gray-400 dark:text-gray-400 dark:focus-within:text-white duration-200 mx-3'>
           <Icon
@@ -48,17 +47,17 @@ const searching = ref(false);
           <input
             ref='searchInput'
             v-model='searchText'
-            type='text'
-            name='search'
-            placeholder='Buscar produtos'
             autocomplete='off'
+            type='text'
+            name='searchInput'
+            placeholder='Buscar produtos'
             aria-label='Buscar produtos'
-            class='input-default rounded-2xl'
+            class='input-default rounded-2xl focus:rounded-b-none'
             @focus='searching = true'
             @blur='searching = false'>
-          <search-list-overlay />
+          <search-list-overlay :show='true' />
         </div>
-      </form>
+      </div>
       <div class='flex space-x-8 default-text-color hover:text-sky-400 font-semibold leading-6 cursor-pointer'>
         Ola, crie sua conta ou logue
         <Icon

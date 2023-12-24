@@ -26,7 +26,7 @@ function closeModal() {
   emit('update:modelValue', false);
 }
 
-watch(() => props.modelValue, (val) => {
+watch(() => props.modelValue, (val: boolean) => {
   if (val) {
     showContent.value = true;
   }
@@ -41,7 +41,7 @@ watch(() => props.modelValue, (val) => {
       <div
         v-show='props.modelValue'
         :class='backdropClass'
-        class='max-h-full inset-0 bg-black bg-opacity-60 fixed z-20 flex'
+        class='max-h-full inset-0 bg-black bg-opacity-80 fixed z-40 flex'
         @click='closeModal' />
     </Transition>
     <Transition
@@ -50,7 +50,7 @@ watch(() => props.modelValue, (val) => {
       <div
         v-show='props.modelValue'
         :class='modalClass'
-        class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black fixed z-40'
+        class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black fixed z-50'
         @click.stop=''>
         <!-- Default slot -->
     
@@ -60,30 +60,6 @@ watch(() => props.modelValue, (val) => {
       </div>
     </Transition>
   </teleport>
-  <!-- <teleport
-    to='body'>
-    <Transition @after-enter='showContent = true'>
-      <div
-        v-show='props.modelValue'
-        class='max-h-full inset-0 dark:bg-gray-700 bg-gray-900 bg-opacity-50 dark:bg-opacity-50 fixed z-50 flex'
-        :class='backdropClass'
-        @click='closeModal'>
-        <Transition
-          name='slide'
-          @leave="emit('update:modelValue', false)">
-          <div
-            v-if='showContent'
-            :class='modalClass'
-            class='max-h-full dark:bg-slate-900 bg-gray-200 border border-black relative'
-            @click.stop=''>        
-            <slot
-              name='default'
-              :close-modal='closeModal' />
-          </div>
-        </Transition>
-      </div>
-    </Transition>
-  </teleport> -->
 </template>
 
 <style scoped>
