@@ -18,11 +18,13 @@ function searchProduct() {
   searchText.value = '';
 }
 
-const tempCartItems = ref([
+const cartItems = ref([
   { name: 'PlayStation 5', description: 'Console bla bla', price: 3449.99, _uid: 1 },
   { name: 'PlayStation 4', description: 'Console bla bla', price: 2149.99, _uid: 2 },
   { name: 'PlayStation 3', description: 'Console bla bla', price: 1249.99, _uid: 3 },
 ]);
+
+const orderPrice = computed(() => cartItems.value.reduce((acc, item) => acc + item.price, 0).toFixed(2));
 
 const options = ref([
   { text: 'Test', key: 1 },
@@ -103,16 +105,16 @@ const searching = ref(false);
     <the-cart v-model:show='showCart'>
       <cart-items-group>
         <cart-item
-          v-for='item in tempCartItems'
+          v-for='item in cartItems'
           :key='item._uid'
           v-bind='item' />
       </cart-items-group>
-      <div class='p-3 flex items-center justify-between'>
-        <h6 class='text-bold text-2xl text-gray-900 dark:text-white'>
+      <div class='my-2 p-3 flex items-center justify-between'>
+        <h6 class='text-bold text-xl text-gray-900 dark:text-white'>
           Total
         </h6>
-        <h6 class='text-bold text-2xl text-gray-900 dark:text-white'>
-          R$ 4000.50
+        <h6 class='text-bold text-xl text-gray-900 dark:text-white'>
+          R$ {{ orderPrice }}
         </h6>
       </div>
     </the-cart>
