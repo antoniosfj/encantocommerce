@@ -5,7 +5,7 @@ const themeStore = useThemeStore();
 const { theme } = storeToRefs(themeStore);
 const { toggleTheme } = themeStore;
 
-const showCartModal = ref(false);
+const showCart = ref(false);
 
 const searchText = ref('');
 const searchInput = ref<HTMLInputElement  | null>(null);
@@ -18,6 +18,19 @@ function searchProduct() {
   searchText.value = '';
 }
 
+const tempCartItems = ref([
+  { name: 'PlayStation 5', description: 'Console bla bla', price: 3449.99, _uid: 1 },
+  { name: 'PlayStation 4', description: 'Console bla bla', price: 2149.99, _uid: 2 },
+  { name: 'PlayStation 3', description: 'Console bla bla', price: 1249.99, _uid: 3 },
+]);
+
+const options = ref([
+  { text: 'Test', key: 1 },
+  { text: 'Test', key: 2 },
+  { text: 'Test', key: 3 },
+  { text: 'Test', key: 4 },
+]);
+
 const searching = ref(false);
 
 </script>
@@ -29,8 +42,11 @@ const searching = ref(false);
       class='max-h-full inset-0 bg-black bg-opacity-70 fixed z-20' />
   </Transition>
   <div
-    :class="[searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95' : 'z-30 bg-opacity-70 dark:bg-opacity-70']"
-    class='sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900 bg-slate-100 duration-100'>
+    :class="[
+      searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95'
+      : 'z-30 bg-opacity-70 dark:bg-opacity-70']"
+    class='
+      sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900 bg-slate-100 duration-100'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
@@ -52,10 +68,12 @@ const searching = ref(false);
             name='searchInput'
             placeholder='Buscar produtos'
             aria-label='Buscar produtos'
-            class='input-default rounded-2xl focus:rounded-b-none'
+            class='input-default pl-10 rounded-2xl focus:rounded-b-none'
             @focus='searching = true'
             @blur='searching = false'>
-          <search-list-overlay :show='true' />
+          <search-list-overlay
+            :show='searching'
+            :options='options' />
         </div>
       </div>
       <div class='flex space-x-8 default-text-color hover:text-sky-400 font-semibold leading-6 cursor-pointer'>
@@ -67,7 +85,7 @@ const searching = ref(false);
       <Icon
         name='mdi:cart-outline'
         class='w-6 h-6 cursor-pointer text-blue-500 dark:text-green-500 ml-6'
-        @click='showCartModal = true' />
+        @click='showCart = true' />
       <div
         class='ml-6 pl-6 default-text-color border-slate-500 border-l'>
         <Icon
@@ -82,41 +100,22 @@ const searching = ref(false);
           @click='toggleTheme' />
       </div>
     </div>
-    <the-modal
-      v-model='showCartModal'
-      backdrop-class='justify-end items-start p-0'
-      modal-class='w-80 h-full right-0 border-l border-gray-300 border-gray-300 dark:border-gray-700'>
-      <template #default='{ closeModal }'>
-        <div
-          class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900/75 bg-slate-100/60 duration-500'>
-          <div class='flex items-center justify-between'>
-            <div>
-              <Icon
-                name='mdi:cart-outline'
-                class='w-6 h-6 text-blue-500 dark:text-green-500' />
-              <span class='default-text-color ml-3'>Carrinho</span>
-            </div>
-            <div
-              class='py-4 px-4 border-l border-gray-300 dark:border-gray-700 cursor-pointer'
-              @click='closeModal()'>
-              <Icon
-                name='mdi:close'
-                class='min-h-[34px] w-6 h-6 default-text-color' />
-            </div>
-          </div>
-        </div>
-        <div class='p-5'>
-          <button
-            class='btn-success block w-full rounded-3xl uppercase font-semibold'>
-            Checkout
-          </button>
-          <button
-            class='mt-2 mb-3 btn-secondary'>
-            Editar
-          </button>
-        </div>
-      </template>
-    </the-modal>
+    <the-cart v-model:show='showCart'>
+      <cart-items-group>
+        <cart-item
+          v-for='item in tempCartItems'
+          :key='item._uid'
+          v-bind='item' />
+      </cart-items-group>
+      <div class='p-3 flex items-center justify-between'>
+        <h6 class='text-bold text-2xl text-gray-900 dark:text-white'>
+          Total
+        </h6>
+        <h6 class='text-bold text-2xl text-gray-900 dark:text-white'>
+          R$ 4000.50
+        </h6>
+      </div>
+    </the-cart>
   </div>
 </template>
 
@@ -124,7 +123,7 @@ const searching = ref(false);
 <style scoped>
 .v-enter-active,
   .v-leave-active {
-    transition: opacity .3s ease;
+    transition: opacity .2s ease;
   }
 
   .v-enter-from,

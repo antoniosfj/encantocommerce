@@ -4,16 +4,32 @@
 
 
 @layer components {
+  .full-block {
+    @apply block w-full
+  }
+
+  .btn {
+    @apply py-2 px-3 border rounded-md transition-colors duration-200
+  }
+  
   .btn-success {
-    @apply bg-blue-500 hover:bg-blue-600 dark:bg-green-600 hover:dark:bg-green-700 py-2 text-slate-100 hover:text-white
+    @apply
+      btn bg-blue-500 hover:bg-blue-600 dark:bg-green-600 hover:dark:bg-green-700
+      text-slate-100 hover:text-white
+      border-blue-500 dark:border-green-600
+      hover:border-blue-400 dark:hover:border-green-500
   }
 
   .btn-secondary {
-    @apply bg-slate-400 hover:bg-slate-500 dark:bg-slate-600 hover:dark:bg-slate-700 block w-full py-2 rounded-3xl uppercase font-semibold text-slate-100 hover:text-white
+    @apply
+      btn bg-slate-400 hover:bg-slate-500 dark:bg-slate-600 hover:dark:bg-slate-700
+      text-slate-100 hover:text-white
+      border-slate-400 dark:border-slate-500
+      hover:border-slate-400 dark:hover:border-slate-500
   }
 
   .input-default {
-    @apply focus:outline-none w-full pr-3 pl-10 py-1.5 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm
+    @apply focus:outline-none w-full px-3 py-1.5 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm
     rounded focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600
     dark:placeholder-gray-300 dark:text-gray-300 dark:focus:text-white dark:focus:ring-blue-500
     dark:focus:border-blue-500 transition-colors duration-500;
@@ -21,5 +37,9 @@
 
   .default-text-color {
     @apply text-slate-700 dark:text-slate-200
+  }
+
+  .default-border {
+    @apply border-gray-300 dark:border-gray-700
   }
 }
