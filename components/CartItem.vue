@@ -18,7 +18,7 @@ defineProps({
 </script>
 
 <template>
-  <li class='p-3 border-t default-border hover:bg-gray-300 dark:hover:bg-gray-800 transition-colors duration-200'>
+  <li class='p-3 border-t default-border-color hover:bg-gray-300 dark:hover:bg-gray-800 transition-colors duration-200'>
     <div class='flex items-center space-x-4'>
       <div class='flex-shrink-0'>
         <img

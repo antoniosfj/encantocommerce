@@ -1,7 +1,7 @@
 <script setup>
 useHead({
   bodyAttrs: {
-    class: 'bg-slate-200 dark:bg-slate-900 transition-colors duration-500 font-sans'
+    class: 'bg-gray-100 dark:bg-gray-900 transition-colors duration-500 font-sans'
   }
 });
 </script>

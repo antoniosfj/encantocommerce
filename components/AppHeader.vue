@@ -48,7 +48,7 @@ const searching = ref(false);
       searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95'
       : 'z-30 bg-opacity-70 dark:bg-opacity-70']"
     class='
-      sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-slate-900 bg-slate-100 duration-100'>
+      sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-gray-900 bg-gray-100 duration-100'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <a
         href='/'
@@ -89,7 +89,7 @@ const searching = ref(false);
         class='w-6 h-6 cursor-pointer text-blue-500 dark:text-green-500 ml-6'
         @click='showCart = true' />
       <div
-        class='ml-6 pl-6 default-text-color border-slate-500 border-l'>
+        class='ml-6 pl-6 default-text-color border-gray-500 border-l'>
         <Icon
           v-if="theme =='dark'"
           name='tabler:sun-high'
