@@ -40,7 +40,7 @@ const emit = defineEmits(['update:show']);
       <slot />
       <div class='py-1 px-3'>
         <button
-          class='btn-success full-block rounded-3xl uppercase font-semibold'>
+          class='btn-primary full-block rounded-3xl uppercase font-semibold'>
           Checkout
         </button>
         <button
