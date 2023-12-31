@@ -20,7 +20,7 @@ const emit = defineEmits(['update:show']);
     @update:model-value="emit('update:show', $event)">
     <template #default='{ closeModal }'>
       <div
-        class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-gray-900/75 bg-gray-100/60 duration-500'>
+        class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-gray-900/75 bg-gray-100/60 duration-300'>
         <div class='flex items-center justify-between'>
           <div>
             <Icon

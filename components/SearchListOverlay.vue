@@ -19,7 +19,7 @@ defineProps({
     role='list'
     class='
       absolute top-[34px] w-full
-      transition-colors duration-500'>
+      transition-colors duration-300'>
     <li
       v-if='options.length === 0'
       class='px-5 py-2 text-center font-bold

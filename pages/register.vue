@@ -1,6 +1,16 @@
 <script setup>
-const registerFormSteps = ref(['Pessoal', 'Endereço', 'Conta']);
-const step = ref(0);
+const registerFormSteps = ref([
+  {
+    title: 'Pessoal'
+  },
+  {
+    title: 'Endereço'
+  },
+  {
+    title: 'Conta'
+  }
+]);
+const step = ref(1);
 </script>
 
 <template>
@@ -17,7 +27,7 @@ const step = ref(0);
       <form>
         <the-stepper
           v-model='step'
-          content-class='mt-6'
+          content-class='my-6'
           :steps='registerFormSteps'>
           <template #step1>
             <div class='flex flex-wrap -mx-3 mb-5'>
@@ -61,7 +71,7 @@ const step = ref(0);
                 required
                 class='input-default'>
             </div>
-            <div class='mb-6'>
+            <div>
               <label
                 for='password'
                 required

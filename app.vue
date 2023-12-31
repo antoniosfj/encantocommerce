@@ -10,6 +10,6 @@ useHead({
   <div>
     <AppHeader />
     <NuxtPage class='max-w-7xl mx-auto px-4' />
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </div>
 </template>
