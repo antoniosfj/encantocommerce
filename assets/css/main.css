@@ -39,7 +39,7 @@
   }
 
   .input-default {
-    @apply focus:outline-none w-full px-3 py-1.5 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm
+    @apply focus:outline-none w-full px-3 py-2 bg-gray-50 border border-gray-300 focus:text-gray-900 text-sm
     rounded focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600
     dark:placeholder-gray-300 dark:text-gray-300 dark:focus:text-white dark:focus:ring-blue-500
     dark:focus:border-blue-500 transition-colors duration-200;

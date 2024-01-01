@@ -41,10 +41,10 @@ watch(() => props.modelValue, (newValue, oldValue) => {
 });
 
 const activeLiClasses = ref(
-  'text-blue-500 dark:text-blue-600 after:border-blue-500 dark:after:border-blue-600');
+  'text-blue-400 dark:text-blue-600 after:border-blue-400 dark:after:border-blue-600');
 
 const currentLiClasses = ref(
-  'text-blue-700 dark:text-blue-500 border-blue-700 dark:border-blue-500'
+  'text-blue-600 dark:text-blue-500 border-blue-600 dark:border-blue-500'
 );
 
 const liClasses = ref('flex items-center sm:w-full sm:after:content-[\'\'] \
