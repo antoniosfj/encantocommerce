@@ -50,11 +50,11 @@ const searching = ref(false);
     class='
       sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-gray-900 bg-gray-100 duration-200'>
     <div class='max-w-7xl mx-auto flex items-center'>
-      <a
-        href='/'
+      <NuxtLink
+        to='/'
         class='default-text-color hover:text-sky-400 font-semibold leading-6'>
         Encanto
-      </a>
+      </NuxtLink>
       <div
         class='max-w-md w-full mx-auto'>
         <div class='relative flex items-center text-gray-300 focus-within:text-gray-400 dark:text-gray-400 dark:focus-within:text-white duration-200 mx-3'>

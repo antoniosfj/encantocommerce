@@ -1,4 +1,10 @@
 <script setup>
+
+import { useRegisterStore } from '@/store/register';
+import { storeToRefs } from 'pinia';
+const registerFormStore = useRegisterStore();
+const { registerForm } = storeToRefs(registerFormStore);
+
 const registerFormSteps = ref([
   {
     title: 'Pessoal'
@@ -43,7 +49,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                 </label>
                 <input
                   id='name'
-                  placeholder='Nome'
+                  v-model='registerForm.name'
                   type='text'
                   required
                   class='input-default'>
@@ -56,11 +62,26 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                 </label>
                 <input
                   id='surname'
-                  placeholder='Sobrenome'
+                  v-model='registerForm.surname'
                   type='text'
                   required
                   class='input-default'>
               </div>
+            </div>
+            <div class='mb-5'>
+              <label
+                for='cpf'
+                class='block mb-2 text-sm font-medium default-text-color'>
+                CPF
+              </label>
+              <input
+                id='cpf'
+                v-model='registerForm.cpf'
+                placeholder='xxx.xxx.xxx-xx'
+                type='tel'
+                name='cpf'
+                required
+                class='input-default'>
             </div>
             <div class='mb-5'>
               <p
@@ -107,6 +128,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               <div class='w-full md:w-1/3 mb-6 md:mb-0'>
                 <select
                   id='birth_day'
+                  v-model='registerForm.birth_day'
                   class='input-default'
                   name='birth_day'
                   required>
@@ -126,13 +148,14 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               <div class='w-full md:w-1/3 md:mb-0'>
                 <select
                   id='birth_month'
+                  v-model='registerForm.birth_month'
                   class='input-default'
                   name='birth_month'
                   required>
                   <option
                     value=''
                     disabled>
-                    Dia
+                    Mês
                   </option>
                   <option
                     v-for='option in monthsOptions'
@@ -145,13 +168,14 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               <div class='w-full md:w-1/3 md:mb-0'>
                 <select
                   id='birth_year'
+                  v-model='registerForm.birth_year'
                   class='input-default'
                   name='birth_year'
                   required>
                   <option
                     value=''
                     disabled>
-                    Dia
+                    Ano
                   </option>
                   <option
                     v-for='option in computedYears'
@@ -170,6 +194,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               </label>
               <input
                 id='phone'
+                v-model='registerForm.phone'
                 placeholder='47 9 1234-5678'
                 type='tel'
                 name='phone'
@@ -186,6 +211,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               </label>
               <input
                 id='cep'
+                v-model='registerForm.address.cep'
                 placeholder='12.345-000'
                 type='text'
                 name='cep'
@@ -201,6 +227,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                 </label>
                 <input
                   id='state'
+                  v-model='registerForm.address.state'
                   name='state'
                   type='text'
                   required
@@ -214,6 +241,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                 </label>
                 <input
                   id='city'
+                  v-model='registerForm.address.city'
                   name='city'
                   type='text'
                   required
@@ -229,6 +257,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                 </label>
                 <input
                   id='street'
+                  v-model='registerForm.address.street'
                   name='street'
                   type='text'
                   required
@@ -242,6 +271,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                 </label>
                 <input
                   id='number'
+                  v-model='registerForm.address.number'
                   name='number'
                   type='number'
                   required
@@ -257,6 +287,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               </label>
               <input
                 id='complement'
+                v-model='registerForm.address.complement'
                 placeholder='Ex: Próximo ao mercado Anacleto.'
                 type='complement'
                 class='input-default'>
@@ -271,6 +302,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               </label>
               <input
                 id='email'
+                v-model='registerForm.email'
                 placeholder='fulano@empresa.com.br'
                 type='email'
                 required
@@ -285,6 +317,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               </label>
               <input
                 id='password'
+                v-model='registerForm.password'
                 placeholder='*******************'
                 type='password'
                 aria-describedby='password-tip'

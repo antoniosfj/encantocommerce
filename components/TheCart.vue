@@ -23,17 +23,21 @@ const emit = defineEmits(['update:show']);
         class='pl-5 sticky top-0 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-gray-900/75 bg-gray-100/60 duration-300'>
         <div class='flex items-center justify-between'>
           <div>
-            <Icon
-              name='mdi:cart-outline'
-              class='w-6 h-6 text-blue-500 dark:text-green-500' />
+            <ClientOnly>
+              <Icon
+                name='mdi:cart-outline'
+                class='w-6 h-6 text-blue-500 dark:text-green-500' />
+            </ClientOnly>
             <span class='default-text-color ml-3'>Carrinho</span>
           </div>
           <div
             class='py-4 px-4 border-l border-gray-300 dark:border-gray-700 cursor-pointer'
             @click='closeModal()'>
-            <Icon
-              name='mdi:close'
-              class='min-h-[34px] w-6 h-6 default-text-color' />
+            <ClientOnly>
+              <Icon
+                name='mdi:close'
+                class='min-h-[34px] w-6 h-6 default-text-color' />
+            </ClientOnly>
           </div>
         </div>
       </div>
