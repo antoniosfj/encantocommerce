@@ -1,13 +1,13 @@
 import { defineStore, skipHydrate } from 'pinia';
 import { useLocalStorage } from '@vueuse/core';
 
-enum Sex {
-  'Male' = 1,
-  'Female' = 2,
-  'Others' = 3,
+export enum GenreEnum {
+  MALE = 1,
+  FEMALE = 2,
+  OTHERS = 3,
 }
 
-interface IAddress {
+export interface IAddress {
   cep: string,
   state: string,
   city: string,
@@ -16,12 +16,12 @@ interface IAddress {
   complement: string,
 }
 
-interface IRegisterForm {
+export interface IRegisterForm {
   // Step 1
   name: string,
   surname: string,
   cpf: string,
-  sex: Sex | null,
+  genre: GenreEnum | null,
   birth_day: number,
   birth_month: number,
   birth_year: number,
@@ -33,7 +33,7 @@ interface IRegisterForm {
   password: string,
 }
 
-const emptyRegisterForm = (): IRegisterForm => ({
+export const emptyRegisterForm = (): IRegisterForm => ({
   name: '',
   surname: '',
   cpf: '',
@@ -54,7 +54,7 @@ const emptyRegisterForm = (): IRegisterForm => ({
   password: '',
 });
 
-const createRegisterForm = <T extends Partial<IRegisterForm>>(initialValues: T): IRegisterForm => {
+export const createRegisterForm = <T extends Partial<IRegisterForm>>(initialValues: T): IRegisterForm => {
   return Object.assign(emptyRegisterForm(), initialValues);
 };
 

@@ -1,6 +1,6 @@
 <script setup>
 
-import { useRegisterStore } from '@/store/register';
+import { useRegisterStore, GenreEnum } from '@/store/register';
 import { storeToRefs } from 'pinia';
 const registerFormStore = useRegisterStore();
 const { registerForm } = storeToRefs(registerFormStore);
@@ -27,7 +27,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
   <div class='xl:-mt-[80px] flex items-center justify-center md:h-screen px-6 py-8'>
     <div
       class='border default-text-color default-border-color
-      w-full lg:max-w-screen-sm p-10 rounded-lg bg-white dark:bg-gray-800 shadow'>
+      w-full lg:max-w-xl p-10 rounded-lg bg-white dark:bg-gray-800 shadow'>
       <h2 class='text-2xl font-bold text-left'>
         Crie sua conta
       </h2>
@@ -40,8 +40,8 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
           content-class='my-6'
           :steps='registerFormSteps'>
           <template #step1>
-            <div class='flex gap-3 mb-5'>
-              <div class='w-full md:w-1/2 mb-6 md:mb-0'>
+            <div class='grid gap-x-3 gap-y-5 mb-5 md:grid-cols-2'>
+              <div>
                 <label
                   for='name'
                   class='block mb-2 text-sm font-medium default-text-color'>
@@ -54,7 +54,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                   required
                   class='input-default'>
               </div>
-              <div class='w-full md:w-1/2 md:mb-0'>
+              <div>
                 <label
                   for='surname'
                   class='block mb-2 text-sm font-medium default-text-color'>
@@ -77,25 +77,32 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               <input
                 id='cpf'
                 v-model='registerForm.cpf'
+                v-maska
                 placeholder='xxx.xxx.xxx-xx'
-                type='tel'
+                data-maska='###.###.###-##'
+                type='text'
                 name='cpf'
                 required
-                class='input-default'>
+                class='input-default'
+                @maska='(event) => {
+                  emit("update:modelValue", event.target.dataset.maskRawValue);
+                }'>
             </div>
             <div class='mb-5'>
               <p
                 class='block mb-2 text-sm font-medium default-text-color'>
-                Sexo
+                Gênero
               </p>
-              <div class='flex gap-3'>
+              <div class='grid gap-3 mb-5 md:grid-cols-3'>
                 <div class='bg-gray-50 dark:bg-gray-700 text-sm w-full flex justify-between items-center p-0 border border-gray-300 dark:border-gray-600 rounded relative'>
                   <label
                     class='px-3 py-2 w-full'
                     for='genre_male'>Masculino</label>
                   <input
                     id='genre_male'
+                    v-model='registerForm.genre'
                     name='genre'
+                    :value='GenreEnum.MALE'
                     type='radio'
                     class='absolute right-2'>
                 </div>
@@ -105,6 +112,8 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                     for='genre_female'>Feminino</label>
                   <input
                     id='genre_female'
+                    v-model='registerForm.genre'
+                    :value='GenreEnum.FEMALE'
                     name='genre'
                     type='radio'
                     class='absolute right-2'>
@@ -115,7 +124,9 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                     for='genre_other'>Outros</label>
                   <input
                     id='genre_other'
+                    v-model='registerForm.genre'
                     name='genre'
+                    :value='GenreEnum.OTHERS'
                     type='radio'
                     class='absolute right-2'>
                 </div>
@@ -124,8 +135,8 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
             <p class='block mb-2 text-sm font-medium default-text-color'>
               Data de nascimento
             </p>
-            <div class='flex gap-3 mb-5'>
-              <div class='w-full md:w-1/3 mb-6 md:mb-0'>
+            <div class='grid gap-3 mb-5 md:grid-cols-3'>
+              <div>
                 <select
                   id='birth_day'
                   v-model='registerForm.birth_day'
@@ -145,7 +156,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                   </option>
                 </select>
               </div>
-              <div class='w-full md:w-1/3 md:mb-0'>
+              <div>
                 <select
                   id='birth_month'
                   v-model='registerForm.birth_month'
@@ -165,7 +176,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                   </option>
                 </select>
               </div>
-              <div class='w-full md:w-1/3 md:mb-0'>
+              <div>
                 <select
                   id='birth_year'
                   v-model='registerForm.birth_year'
@@ -195,6 +206,8 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               <input
                 id='phone'
                 v-model='registerForm.phone'
+                v-maska
+                data-maska='(##) # ####-####'
                 placeholder='47 9 1234-5678'
                 type='tel'
                 name='phone'
@@ -212,14 +225,16 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
               <input
                 id='cep'
                 v-model='registerForm.address.cep'
+                v-maska
                 placeholder='12.345-000'
+                data-maska='##.###-###'
                 type='text'
                 name='cep'
                 required
                 class='input-default'>
             </div>
-            <div class='flex gap-3 mb-5'>
-              <div class='w-full md:w-1/2 mb-6 md:mb-0'>
+            <div class='grid gap-x-3 gap-y-5 mb-5 md:grid-cols-2'>
+              <div>
                 <label
                   for='state'
                   class='block mb-2 text-sm font-medium default-text-color'>
@@ -233,7 +248,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                   required
                   class='input-default'>
               </div>
-              <div class='w-full md:w-1/2 md:mb-0'>
+              <div>
                 <label
                   for='city'
                   class='block mb-2 text-sm font-medium default-text-color'>
@@ -248,8 +263,8 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                   class='input-default'>
               </div>
             </div>
-            <div class='flex gap-3 mb-5'>
-              <div class='w-full md:w-3/4 mb-6 md:mb-0'>
+            <div class='grid gap-x-3 gap-y-5 mb-5 md:grid-cols-2'>
+              <div>
                 <label
                   for='street'
                   class='block mb-2 text-sm font-medium default-text-color'>
@@ -263,7 +278,7 @@ const { monthsOptions, computedDayOptions, computedYears } = useOptions();
                   required
                   class='input-default'>
               </div>
-              <div class='w-full md:w-1/4 md:mb-0'>
+              <div>
                 <label
                   for='number'
                   class='block mb-2 text-sm font-medium default-text-color'>
