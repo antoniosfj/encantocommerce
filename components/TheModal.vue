@@ -50,7 +50,7 @@ watch(() => props.modelValue, (val: boolean) => {
       <div
         v-show='props.modelValue'
         :class='modalClass'
-        class='max-h-full dark:bg-gray-900 bg-gray-200 border border-black fixed z-50'
+        class='max-h-full dark:bg-zinc-900 bg-zinc-200 border border-black fixed z-50'
         @click.stop=''>
         <!-- Default slot -->
     

@@ -18,7 +18,7 @@ defineProps({
 </script>
 
 <template>
-  <li class='p-3 border-t default-border-color hover:bg-gray-300 dark:hover:bg-gray-800 transition-colors duration-200'>
+  <li class='p-3 border-t default-border-color hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-colors duration-200'>
     <div class='flex items-center space-x-4'>
       <div class='flex-shrink-0'>
         <img
@@ -28,14 +28,14 @@ defineProps({
       </div>
       <div class='flex-1 min-w-0'>
         <p
-          class='font-medium text-gray-900 truncate dark:text-white'>
+          class='font-medium text-zinc-900 truncate dark:text-white'>
           {{ name }}
         </p>
-        <p class='text-sm text-gray-500 truncate dark:text-gray-400'>
+        <p class='text-sm text-zinc-500 truncate dark:text-zinc-400'>
           {{ description }}
         </p>
       </div>
-      <div class='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
+      <div class='inline-flex items-center text-base font-semibold text-zinc-900 dark:text-white'>
         R$ {{ price }}
       </div>
     </div>

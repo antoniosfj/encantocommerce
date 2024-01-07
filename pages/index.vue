@@ -27,9 +27,9 @@ const slides = [
       <div
         v-for="title in ['Principais categorias', 'Recomendado', 'Random']"
         :key='title'
-        class='h-[420px] mt-5 flex flex-col py-5 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 text-gray-800 shadow-lg rounded-sm overflow-hidden max-w-sm transition-all duration-300'>
+        class='h-[420px] mt-5 flex flex-col py-5 bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300 text-zinc-800 shadow-lg rounded-sm overflow-hidden max-w-sm transition-all duration-300'>
         <div class='font-bold text-xl mb-3 px-4'>
-          <h2 class='dark:text-gray-200 text-gray-900'>
+          <h2 class='dark:text-zinc-200 text-zinc-900'>
             {{ title }}
           </h2>
         </div>

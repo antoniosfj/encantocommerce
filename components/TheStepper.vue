@@ -41,10 +41,10 @@ watch(() => props.modelValue, (newValue, oldValue) => {
 });
 
 const activeLiClasses = ref(
-  'text-blue-400 dark:text-blue-600 after:border-blue-400 dark:after:border-blue-600');
+  'text-violet-600 dark:text-violet-600 after:border-violet-600 dark:after:border-violet-600');
 
 const currentLiClasses = ref(
-  'text-blue-600 dark:text-blue-500 border-blue-600 dark:border-blue-500'
+  'text-violet-600 dark:text-violet-500 border-violet-600 dark:border-violet-500'
 );
 
 const liClasses = ref('flex items-center sm:w-full sm:after:content-[\'\'] \
@@ -52,7 +52,7 @@ const liClasses = ref('flex items-center sm:w-full sm:after:content-[\'\'] \
   sm:after:inline-block after:mx-6 xl:after-mx-10 transition-colors duration-200 \
   after:transition-color after:duration-200 ');
 const liSpanClasses = ref('flex items-center after:content-["/"] sm:after:hidden \
-  after:mx-2 after:text-gray-200 dark:after:text-gray-500');
+  after:mx-2 after:text-zinc-200 dark:after:text-zinc-500');
 
 </script>
 
@@ -61,7 +61,7 @@ const liSpanClasses = ref('flex items-center after:content-["/"] sm:after:hidden
     <ol
       class='flex items-center w-full
       text-sm font-medium text-center
-      dark:text-gray-400 sm:text-base'>
+      dark:text-zinc-400 sm:text-base'>
       <li
         v-for='(step, index) in steps'
         :key='index'

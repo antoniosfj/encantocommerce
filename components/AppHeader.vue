@@ -48,7 +48,7 @@ const searching = ref(false);
       searching ? 'z-30 bg-opacity-95 dark:bg-opacity-95'
       : 'z-30 bg-opacity-70 dark:bg-opacity-70']"
     class='
-      sticky top-0 py-4 px-4 lg:px-8 w-full border-gray-300 dark:border-gray-700 border-b dark:bg-gray-900 bg-gray-100 duration-200'>
+      sticky top-0 py-4 px-4 lg:px-8 w-full border-zinc-300 dark:border-zinc-700 border-b dark:bg-zinc-900 bg-zinc-100 duration-200'>
     <div class='max-w-7xl mx-auto flex items-center'>
       <NuxtLink
         to='/'
@@ -57,7 +57,7 @@ const searching = ref(false);
       </NuxtLink>
       <div
         class='max-w-md w-full mx-auto'>
-        <div class='relative flex items-center text-gray-300 focus-within:text-gray-400 dark:text-gray-400 dark:focus-within:text-white duration-200 mx-3'>
+        <div class='relative flex items-center text-zinc-300 focus-within:text-zinc-400 dark:text-zinc-400 dark:focus-within:text-white duration-200 mx-3'>
           <Icon
             name='tabler:search'
             class='w-6 h-6 absolute ml-3 cursor-pointer'
@@ -86,10 +86,10 @@ const searching = ref(false);
       </div>
       <Icon
         name='mdi:cart-outline'
-        class='w-6 h-6 cursor-pointer text-blue-500 dark:text-green-500 ml-6'
+        class='w-6 h-6 cursor-pointer text-violet-500 dark:text-green-500 ml-6'
         @click='showCart = true' />
       <div
-        class='ml-6 pl-6 default-text-color border-gray-500 border-l'>
+        class='ml-6 pl-6 default-text-color border-zinc-500 border-l'>
         <Icon
           v-if="theme =='dark'"
           name='tabler:sun-high'
@@ -110,10 +110,10 @@ const searching = ref(false);
           v-bind='item' />
       </cart-items-group>
       <div class='my-2 p-3 flex items-center justify-between'>
-        <h6 class='text-bold text-xl text-gray-900 dark:text-white'>
+        <h6 class='text-bold text-xl text-zinc-900 dark:text-white'>
           Total
         </h6>
-        <h6 class='text-bold text-xl text-gray-900 dark:text-white'>
+        <h6 class='text-bold text-xl text-zinc-900 dark:text-white'>
           R$ {{ orderPrice }}
         </h6>
       </div>
